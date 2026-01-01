@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "668186032166",
+    "project_id": "respiracare-1707c",
+    "storage_bucket": "respiracare-1707c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:668186032166:android:a80cc93037605dfbae8ee7",
+        "android_client_info": {
+          "package_name": "com.example.implementasiml"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkWkqnBxhiHzJfVuqp49573MlzeQBiwc8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:668186032166:android:e742dd0defa82c22ae8ee7",
+        "android_client_info": {
+          "package_name": "com.example.respiracare"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkWkqnBxhiHzJfVuqp49573MlzeQBiwc8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

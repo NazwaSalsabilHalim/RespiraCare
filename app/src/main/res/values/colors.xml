@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="blue_dark">#355C7D</color>
+    <color name="blue_primary">#4A6FA5</color>
+    <color name="blue_light">#D7E3FC</color>
+
+    <!-- BUTTON dibuat LEBIH TERANG -->
+    <color name="blue_button">#6F94C5</color>
+
+    <color name="white">#FFFFFF</color>
+
+    <!-- Warna utama -->
+    <color name="primary_dark">#0A1E3C</color>
+    <color name="primary_blue">#395783</color>
+    <color name="primary_light">#91B1E4</color>
+    <color name="primary_medium">#6491D1</color>
+
+    <color name="background_light">#E9EFF8</color>
+    <color name="background_lighter">#EEF3FB</color>
+    <color name="border_light">#E1E8F5</color>
+    <color name="text_gray">#6C8EBF</color>
+    <color name="card_white">#FFFFFF</color>
+</resources>

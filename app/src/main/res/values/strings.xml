@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">RespiraCare</string>
+    <string name="login_title">Welcome Back</string>
+    <string name="login_subtitle">Your breathing companion</string>
+    <string name="login_button">Login</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="logout">Logout</string>
+    <string name="title_detail_obat">Silahkan isi detail obat kamu</string>
+    <string name="penjelasan1">Latihan pernapasan</string>
+
+    <string name="label_symptoms">Gejala</string>
+    <string name="label_disease_type">Jenis penyakit</string>
+    <string name="label_severity">Tingkat Keparahan Penyakit</string>
+    <string name="label_gender">Jenis kelamin</string>
+    <string name="label_age">Umur</string>
+    <string name="hint_age">Masukkan umur</string>
+    <string name="btn_predict">Prediksi</string>
+    <string name="result_default">Hasil: -</string>
+
+    <string name="spinner_default">Pilih...</string>
+    <string name="spinner_option1">Item 1</string>
+    <string name="spinner_option2">Item 2</string>
+    <string name="spinner_option3">Item 3</string>
+</resources>
