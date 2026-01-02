@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -12,8 +13,13 @@ class MainActivity : AppCompatActivity() {
 
         val logout = findViewById<Button>(R.id.btnLogout)
         logout.setOnClickListener {
-            startActivity(Intent(this, LoginActivity::class.java))
+            FirebaseAuth.getInstance().signOut() // 🔥 WAJIB
+
+            val intent = Intent(this, LoginActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
             finish()
         }
+
     }
 }

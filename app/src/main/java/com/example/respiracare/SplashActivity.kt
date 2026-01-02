@@ -11,8 +11,18 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
+        val auth = FirebaseAuth.getInstance()
+
         window.decorView.postDelayed({
-            startActivity(Intent(this, LoginActivity::class.java))
+            val intent = if (auth.currentUser != null) {
+                Intent(this, Home::class.java)
+            } else {
+                Intent(this, LoginActivity::class.java)
+            }
+
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or
+                    Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
             finish()
         }, 1200)
     }
