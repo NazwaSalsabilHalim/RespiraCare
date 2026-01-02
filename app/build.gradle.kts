@@ -40,6 +40,17 @@ android {
 }
 
 dependencies {
+    // ONNX
+    implementation("com.microsoft.onnxruntime:onnxruntime-android:1.15.1")
+
+    // Firebase BOM (WAJIB di atas Firebase lain)
+    implementation(platform("com.google.firebase:firebase-bom:33.5.1"))
+
+    // Firebase (TANPA versi)
+    implementation("com.google.firebase:firebase-auth-ktx")
+    implementation("com.google.firebase:firebase-firestore-ktx")
+
+    // AndroidX & Material
     implementation(platform("com.google.firebase:firebase-bom:32.7.2"))
     implementation("com.google.firebase:firebase-auth-ktx")
     implementation("com.google.firebase:firebase-firestore-ktx")
@@ -49,6 +60,8 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+
+    // Testing
 //    implementation(libs.firebase.database)
 //    implementation(libs.firebase.auth.ktx)
 //    implementation(libs.firebase.firestore.ktx)
