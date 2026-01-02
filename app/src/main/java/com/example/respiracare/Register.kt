@@ -8,36 +8,40 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.respiracare.databinding.ActivityRegisterBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class Register : AppCompatActivity() {
 
     private lateinit var binding: ActivityRegisterBinding
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // Edge to edge
         enableEdgeToEdge()
 
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Handle system bars padding
+        auth = FirebaseAuth.getInstance()
+
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        // Tombol Register
         binding.btnRegister.setOnClickListener {
             val email = binding.etEmail.text.toString().trim()
             val password = binding.etPassword.text.toString().trim()
             val confirmPassword = binding.etConfirmPassword.text.toString().trim()
 
-            // Validasi input
             if (email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
                 Toast.makeText(this, "Semua field harus diisi!", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            if (password.length < 6) {
+                Toast.makeText(this, "Password minimal 6 karakter!", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -46,33 +50,38 @@ class Register : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // Register sukses → langsung ke LoginActivity
-            Toast.makeText(this, "Registrasi berhasil!", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, LoginActivity::class.java)
-            intent.putExtra("email", email) // email dikirim ke login
-            startActivity(intent)
-            finish()
+            // 🔥 REGISTER KE FIREBASE
+            auth.createUserWithEmailAndPassword(email, password)
+                .addOnSuccessListener {
+                    FirebaseAuth.getInstance().signOut() // 🔥 PENTING
+
+                    Toast.makeText(this, "Registrasi berhasil, silakan login", Toast.LENGTH_SHORT).show()
+
+                    val intent = Intent(this, LoginActivity::class.java)
+                    intent.putExtra("email", email)
+                    startActivity(intent)
+                    finish()
+                }
         }
 
         // Show/hide password
         binding.btnShowPassword.setOnClickListener {
-            val inputType = if (binding.etPassword.inputType == android.text.InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD) {
-                android.text.InputType.TYPE_CLASS_TEXT or android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD
-            } else {
-                android.text.InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
-            }
-            binding.etPassword.inputType = inputType
-            binding.etPassword.setSelection(binding.etPassword.text.length)
+            togglePassword(binding.etPassword)
         }
 
         binding.btnShowConfirmPassword.setOnClickListener {
-            val inputType = if (binding.etConfirmPassword.inputType == android.text.InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD) {
+            togglePassword(binding.etConfirmPassword)
+        }
+    }
+
+    private fun togglePassword(editText: android.widget.EditText) {
+        val inputType =
+            if (editText.inputType == android.text.InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD) {
                 android.text.InputType.TYPE_CLASS_TEXT or android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD
             } else {
                 android.text.InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
             }
-            binding.etConfirmPassword.inputType = inputType
-            binding.etConfirmPassword.setSelection(binding.etConfirmPassword.text.length)
-        }
+        editText.inputType = inputType
+        editText.setSelection(editText.text.length)
     }
 }

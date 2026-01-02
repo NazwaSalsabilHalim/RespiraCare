@@ -10,12 +10,15 @@ import androidx.core.app.NotificationManagerCompat
 
 class ReminderReceiver : BroadcastReceiver() {
 
-    @RequiresPermission(Manifest.permission.POST_NOTIFICATIONS)
     override fun onReceive(context: Context, intent: Intent) {
 
-        val namaObat = intent.getStringExtra("nama_obat") ?: "Obat"
+        val nama = intent.getStringExtra("NAMA") ?: "Obat"
+        val id = intent.getStringExtra("ID") ?: ""
 
-        val notifIntent = Intent(context, Notifikasi::class.java)
+        val notifIntent = Intent(context, Notifikasi::class.java).apply {
+            putExtra("ID", id)
+        }
+
         val pendingIntent = PendingIntent.getActivity(
             context,
             0,
@@ -38,11 +41,11 @@ class ReminderReceiver : BroadcastReceiver() {
         val notif = NotificationCompat.Builder(context, channelId)
             .setSmallIcon(R.drawable.medicine)
             .setContentTitle("Waktunya Minum Obat")
-            .setContentText(namaObat)
-            .setAutoCancel(true)
+            .setContentText(nama)
             .setContentIntent(pendingIntent)
+            .setAutoCancel(true)
             .build()
 
-        NotificationManagerCompat.from(context).notify(1, notif)
+        NotificationManagerCompat.from(context).notify(id.hashCode(), notif)
     }
 }

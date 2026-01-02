@@ -1,20 +1,20 @@
 package com.example.respiracare
 
+import android.content.Intent
 import android.os.Bundle
-import android.widget.LinearLayout
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.respiracare.databinding.ActivityIntroBinding
 
 class Intro : AppCompatActivity() {
+    private lateinit var binding: ActivityIntroBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_intro)
+        binding = ActivityIntroBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val btnStart = findViewById<LinearLayout>(R.id.btnStart)
-
-        btnStart.setOnClickListener {
-            Toast.makeText(this, "Tombol Mulai Prediksi diklik", Toast.LENGTH_SHORT).show()
+        binding.btnStart.setOnClickListener {
+            startActivity(Intent(this, Prediksi::class.java))
         }
     }
 }
