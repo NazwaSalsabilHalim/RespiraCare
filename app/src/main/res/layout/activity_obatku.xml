@@ -13,8 +13,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:background="@drawable/bg_login_curve"
-        android:paddingTop="100dp"
-        android:paddingBottom="109dp"
+        android:paddingTop="160dp"
+        android:paddingBottom="160dp"
         android:paddingStart="30dp"
         android:paddingEnd="30dp"
         app:layout_constraintTop_toTopOf="parent"
@@ -78,6 +78,7 @@
                         android:contentDescription="@null" />
 
                     <EditText
+                        android:id="@+id/etNamaObat"
                         android:layout_width="0dp"
                         android:layout_height="48dp"
                         android:layout_weight="1"
@@ -105,6 +106,7 @@
                         android:contentDescription="@null" />
 
                     <EditText
+                        android:id="@+id/etDosis"
                         android:layout_width="0dp"
                         android:layout_height="48dp"
                         android:layout_weight="1"
@@ -115,32 +117,32 @@
                         android:textColorHint="@color/white"/>
                 </LinearLayout>
 
-                <!-- ITEM: Frekuensi -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:padding="12dp"
-                    android:layout_marginBottom="12dp"
-                    android:background="@drawable/bg_button_blue_primary">
+<!--                &lt;!&ndash; ITEM: Frekuensi &ndash;&gt;-->
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="48dp"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:gravity="center_vertical"-->
+<!--                    android:padding="12dp"-->
+<!--                    android:layout_marginBottom="12dp"-->
+<!--                    android:background="@drawable/bg_button_blue_primary">-->
 
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:src="@drawable/heartbeat"
-                        android:contentDescription="@null" />
+<!--                    <ImageView-->
+<!--                        android:layout_width="20dp"-->
+<!--                        android:layout_height="20dp"-->
+<!--                        android:src="@drawable/heartbeat"-->
+<!--                        android:contentDescription="@null" />-->
 
-                    <EditText
-                        android:layout_width="0dp"
-                        android:layout_height="48dp"
-                        android:layout_weight="1"
-                        android:hint="Frekuensi"
-                        android:background="@null"
-                        android:paddingStart="12dp"
-                        android:textColor="@color/white"
-                        android:textColorHint="@color/white"/>
-                </LinearLayout>
+<!--                    <EditText-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="48dp"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:hint="Frekuensi"-->
+<!--                        android:background="@null"-->
+<!--                        android:paddingStart="12dp"-->
+<!--                        android:textColor="@color/white"-->
+<!--                        android:textColorHint="@color/white"/>-->
+<!--                </LinearLayout>-->
 
                 <!-- ITEM: Waktu Minum -->
                 <LinearLayout
@@ -159,41 +161,42 @@
                         android:contentDescription="@null" />
 
                     <EditText
+                        android:id="@+id/etWaktu"
                         android:layout_width="0dp"
                         android:layout_height="48dp"
                         android:layout_weight="1"
-                        android:hint="Waktu Minum"
+                        android:hint="Waktu Minum (HH:mm)"
                         android:background="@null"
                         android:paddingStart="12dp"
                         android:textColor="@color/white"
                         android:textColorHint="@color/white"/>
                 </LinearLayout>
 
-                <!-- ITEM: Gejala -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:padding="12dp"
-                    android:background="@drawable/bg_button_blue_primary">
+<!--                &lt;!&ndash; ITEM: Gejala &ndash;&gt;-->
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="48dp"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:gravity="center_vertical"-->
+<!--                    android:padding="12dp"-->
+<!--                    android:background="@drawable/bg_button_blue_primary">-->
 
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:src="@drawable/coronavirus"
-                        android:contentDescription="@null" />
+<!--                    <ImageView-->
+<!--                        android:layout_width="20dp"-->
+<!--                        android:layout_height="20dp"-->
+<!--                        android:src="@drawable/coronavirus"-->
+<!--                        android:contentDescription="@null" />-->
 
-                    <EditText
-                        android:layout_width="0dp"
-                        android:layout_height="48dp"
-                        android:layout_weight="1"
-                        android:hint="Gejala"
-                        android:background="@null"
-                        android:paddingStart="12dp"
-                        android:textColor="@color/white"
-                        android:textColorHint="@color/white"/>
-                </LinearLayout>
+<!--                    <EditText-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="48dp"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:hint="Gejala"-->
+<!--                        android:background="@null"-->
+<!--                        android:paddingStart="12dp"-->
+<!--                        android:textColor="@color/white"-->
+<!--                        android:textColorHint="@color/white"/>-->
+<!--                </LinearLayout>-->
 
             </LinearLayout>
 

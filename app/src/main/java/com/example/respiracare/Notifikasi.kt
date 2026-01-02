@@ -49,6 +49,6 @@ class Notifikasi : AppCompatActivity() {
         startActivity(
             Intent(this, Reminder::class.java)
         )
-        finish()
+//        finish()
     }
 }
