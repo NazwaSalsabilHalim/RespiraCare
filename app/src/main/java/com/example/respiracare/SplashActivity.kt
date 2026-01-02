@@ -14,16 +14,23 @@ class SplashActivity : AppCompatActivity() {
         val auth = FirebaseAuth.getInstance()
 
         window.decorView.postDelayed({
+
             val intent = if (auth.currentUser != null) {
+                // User sudah login
                 Intent(this, Home::class.java)
             } else {
+                // User belum login
                 Intent(this, LoginActivity::class.java)
             }
 
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or
-                    Intent.FLAG_ACTIVITY_CLEAR_TASK
+            // 🔥 bersihkan semua activity sebelumnya
+            intent.flags =
+                Intent.FLAG_ACTIVITY_NEW_TASK or
+                        Intent.FLAG_ACTIVITY_CLEAR_TASK
+
             startActivity(intent)
             finish()
+
         }, 1200)
     }
 }
