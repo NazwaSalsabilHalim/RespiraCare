@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.respiracare.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthInvalidUserException
 
 class LoginActivity : AppCompatActivity() {
 
@@ -46,12 +47,27 @@ class LoginActivity : AppCompatActivity() {
                     startActivity(Intent(this, Home::class.java))
                     finish()
                 }
-                .addOnFailureListener {
-                    Toast.makeText(
-                        this,
-                        "Email atau password salah!",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                .addOnFailureListener { e ->
+
+                    if (e is FirebaseAuthInvalidUserException) {
+                        // EMAIL BELUM TERDAFTAR
+                        Toast.makeText(
+                            this,
+                            "Akun belum terdaftar, silakan registrasi",
+                            Toast.LENGTH_SHORT
+                        ).show()
+
+                        startActivity(
+                            Intent(this, Register::class.java)
+                        )
+                    } else {
+                        // PASSWORD SALAH / ERROR LAIN
+                        Toast.makeText(
+                            this,
+                            "Email atau password salah!",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
                 }
         }
     }
