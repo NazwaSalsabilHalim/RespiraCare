@@ -2,43 +2,29 @@ package com.example.respiracare
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.TypedValue
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import com.example.respiracare.databinding.ActivityLoginBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityLoginBinding
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // --- Set icon untuk email dan password ---
-        val sizeInDp = 24
-        val sizeInPx = TypedValue.applyDimension(
-            TypedValue.COMPLEX_UNIT_DIP,
-            sizeInDp.toFloat(),
-            resources.displayMetrics
-        ).toInt()
+        auth = FirebaseAuth.getInstance()
 
-        val emailIcon = ContextCompat.getDrawable(this, R.drawable.mail)
-        emailIcon?.setBounds(0, 0, sizeInPx, sizeInPx)
-        binding.email.setCompoundDrawables(emailIcon, null, null, null)
-
-        val passwordIcon = ContextCompat.getDrawable(this, R.drawable.padlock)
-        passwordIcon?.setBounds(0, 0, sizeInPx, sizeInPx)
-        binding.password.setCompoundDrawables(passwordIcon, null, null, null)
-
-        // --- Isi email otomatis dari Register ---
+        // Prefill email dari Register
         val prefillEmail = intent.getStringExtra("email")
         if (!prefillEmail.isNullOrEmpty()) {
             binding.email.setText(prefillEmail)
         }
 
-        // --- Tombol Login ---
         binding.btnLogin.setOnClickListener {
             val email = binding.email.text.toString().trim()
             val password = binding.password.text.toString().trim()
@@ -53,10 +39,20 @@ class LoginActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // TODO: nanti bisa tambahkan FirebaseAuth login di sini
-            // Untuk sekarang langsung ke Home
-            startActivity(Intent(this, Home::class.java))
-            finish()
+            // 🔥 LOGIN KE FIREBASE
+            auth.signInWithEmailAndPassword(email, password)
+                .addOnSuccessListener {
+                    Toast.makeText(this, "Login berhasil!", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this, Home::class.java))
+                    finish()
+                }
+                .addOnFailureListener {
+                    Toast.makeText(
+                        this,
+                        "Email atau password salah!",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
         }
     }
 }

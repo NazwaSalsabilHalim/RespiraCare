@@ -23,7 +23,7 @@ class Home : AppCompatActivity() {
 
         // MENU 1 - Diagnosa
         menuDiagnosa.setOnClickListener {
-            startActivity(Intent(this, Prediksi::class.java))
+            startActivity(Intent(this, Intro::class.java))
         }
 
         // MENU 2 - Obatku

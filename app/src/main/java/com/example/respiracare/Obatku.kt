@@ -23,33 +23,39 @@ class Obatku : AppCompatActivity() {
 
             val namaObat = "Paracetamol"
             val dosis = "3x sehari"
-            val waktu = "08:00"
+            val jam = "08:00"
 
             val reminder = hashMapOf(
                 "nama" to namaObat,
                 "dosis" to dosis,
-                "waktu" to waktu,
+                "jam" to jam,
                 "aktif" to true
             )
 
             db.collection("reminder")
                 .add(reminder)
                 .addOnSuccessListener { doc ->
-                    setAlarm(doc.id, namaObat)
-                    startActivity(Intent(this, Reminder::class.java))
+                    setAlarm(doc.id, jam, namaObat)
+
+                    startActivity(
+                        Intent(this, Reminder::class.java)
+                    )
                 }
         }
     }
 
-    private fun setAlarm(id: String, namaObat: String) {
-        val calendar = Calendar.getInstance()
-        calendar.set(Calendar.HOUR_OF_DAY, 8)
-        calendar.set(Calendar.MINUTE, 0)
-        calendar.set(Calendar.SECOND, 0)
+    private fun setAlarm(id: String, jam: String, namaObat: String) {
+        val split = jam.split(":")
+        val calendar = Calendar.getInstance().apply {
+            set(Calendar.HOUR_OF_DAY, split[0].toInt())
+            set(Calendar.MINUTE, split[1].toInt())
+            set(Calendar.SECOND, 0)
+        }
 
-        val intent = Intent(this, ReminderReceiver::class.java)
-        intent.putExtra("nama_obat", namaObat)
-        intent.putExtra("id", id)
+        val intent = Intent(this, ReminderReceiver::class.java).apply {
+            putExtra("ID", id)
+            putExtra("NAMA", namaObat)
+        }
 
         val pendingIntent = PendingIntent.getBroadcast(
             this,
