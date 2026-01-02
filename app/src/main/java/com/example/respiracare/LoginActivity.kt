@@ -43,32 +43,20 @@ class LoginActivity : AppCompatActivity() {
             // 🔥 LOGIN KE FIREBASE
             auth.signInWithEmailAndPassword(email, password)
                 .addOnSuccessListener {
-                    Toast.makeText(this, "Login berhasil!", Toast.LENGTH_SHORT).show()
                     startActivity(Intent(this, Home::class.java))
                     finish()
                 }
-                .addOnFailureListener { e ->
-
-                    if (e is FirebaseAuthInvalidUserException) {
-                        // EMAIL BELUM TERDAFTAR
-                        Toast.makeText(
-                            this,
-                            "Akun belum terdaftar, silakan registrasi",
-                            Toast.LENGTH_SHORT
-                        ).show()
-
-                        startActivity(
-                            Intent(this, Register::class.java)
-                        )
-                    } else {
-                        // PASSWORD SALAH / ERROR LAIN
-                        Toast.makeText(
-                            this,
-                            "Email atau password salah!",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
+                .addOnFailureListener {
+                    Toast.makeText(
+                        this,
+                        "Login gagal. Cek email / password",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
+        }
+
+        binding.tvRegister.setOnClickListener {
+            startActivity(Intent(this, Register::class.java))
         }
     }
 }

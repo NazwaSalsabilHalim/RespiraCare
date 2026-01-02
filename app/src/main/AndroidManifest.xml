@@ -52,10 +52,10 @@
             android:exported="true" />
         <activity
             android:name=".SplashActivity"
-            android:exported="true" >
+            android:exported="true"
+            android:theme="@style/Theme.RespiraCare.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -67,7 +67,7 @@
             android:exported="true" />
         <activity
             android:name=".ItemMenu"
-            android:exported="true" /> <!-- HAPUS intent-filter dari MainActivity atau hapus MainActivity jika tidak dipakai -->
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true" />

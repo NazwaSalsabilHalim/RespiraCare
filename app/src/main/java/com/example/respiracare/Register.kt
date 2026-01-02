@@ -53,15 +53,14 @@ class Register : AppCompatActivity() {
             // 🔥 REGISTER KE FIREBASE
             auth.createUserWithEmailAndPassword(email, password)
                 .addOnSuccessListener {
-                    Toast.makeText(this, "Registrasi berhasil!", Toast.LENGTH_SHORT).show()
+                    FirebaseAuth.getInstance().signOut() // 🔥 PENTING
+
+                    Toast.makeText(this, "Registrasi berhasil, silakan login", Toast.LENGTH_SHORT).show()
 
                     val intent = Intent(this, LoginActivity::class.java)
                     intent.putExtra("email", email)
                     startActivity(intent)
                     finish()
-                }
-                .addOnFailureListener { e ->
-                    Toast.makeText(this, e.message ?: "Registrasi gagal", Toast.LENGTH_SHORT).show()
                 }
         }
 

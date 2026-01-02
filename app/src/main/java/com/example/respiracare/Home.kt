@@ -5,8 +5,19 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.LinearLayout
 import com.google.android.material.card.MaterialCardView
+import com.google.firebase.auth.FirebaseAuth
 
 class Home : AppCompatActivity() {
+
+    override fun onStart() {
+        super.onStart()
+
+        val auth = FirebaseAuth.getInstance()
+        if (auth.currentUser == null) {
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

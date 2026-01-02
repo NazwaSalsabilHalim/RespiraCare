@@ -3,7 +3,6 @@ package com.example.respiracare
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.respiracare.databinding.ActivitySplashBinding
 import com.google.firebase.auth.FirebaseAuth
 
 class SplashActivity : AppCompatActivity() {
@@ -12,17 +11,9 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        val auth = FirebaseAuth.getInstance()
-
-        val nextIntent = if (auth.currentUser != null) {
-            // Sudah login
-            Intent(this, Home::class.java)
-        } else {
-            // Belum login
-            Intent(this, LoginActivity::class.java)
-        }
-
-        startActivity(nextIntent)
-        finish()
+        window.decorView.postDelayed({
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        }, 1200)
     }
 }
