@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootObatku"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/blue_light">
@@ -22,13 +23,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Content -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- Title -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -39,7 +38,6 @@
                 android:layout_marginStart="12dp"
                 android:layout_marginEnd="12dp"/>
 
-            <!-- Description -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -50,7 +48,6 @@
                 android:layout_marginStart="12dp"
                 android:layout_marginEnd="12dp"/>
 
-            <!-- CARD BESAR -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -61,7 +58,7 @@
                 android:layout_marginStart="12dp"
                 android:layout_marginEnd="12dp">
 
-                <!-- ITEM: Nama Obat -->
+                <!-- Nama Obat -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
@@ -74,8 +71,7 @@
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:src="@drawable/drugs"
-                        android:contentDescription="@null" />
+                        android:src="@drawable/drugs"/>
 
                     <EditText
                         android:id="@+id/etNamaObat"
@@ -89,7 +85,7 @@
                         android:textColorHint="@color/white"/>
                 </LinearLayout>
 
-                <!-- ITEM: Dosis -->
+                <!-- Dosis -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
@@ -102,8 +98,7 @@
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:src="@drawable/dropper"
-                        android:contentDescription="@null" />
+                        android:src="@drawable/dropper"/>
 
                     <EditText
                         android:id="@+id/etDosis"
@@ -117,34 +112,7 @@
                         android:textColorHint="@color/white"/>
                 </LinearLayout>
 
-<!--                &lt;!&ndash; ITEM: Frekuensi &ndash;&gt;-->
-<!--                <LinearLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="48dp"-->
-<!--                    android:orientation="horizontal"-->
-<!--                    android:gravity="center_vertical"-->
-<!--                    android:padding="12dp"-->
-<!--                    android:layout_marginBottom="12dp"-->
-<!--                    android:background="@drawable/bg_button_blue_primary">-->
-
-<!--                    <ImageView-->
-<!--                        android:layout_width="20dp"-->
-<!--                        android:layout_height="20dp"-->
-<!--                        android:src="@drawable/heartbeat"-->
-<!--                        android:contentDescription="@null" />-->
-
-<!--                    <EditText-->
-<!--                        android:layout_width="0dp"-->
-<!--                        android:layout_height="48dp"-->
-<!--                        android:layout_weight="1"-->
-<!--                        android:hint="Frekuensi"-->
-<!--                        android:background="@null"-->
-<!--                        android:paddingStart="12dp"-->
-<!--                        android:textColor="@color/white"-->
-<!--                        android:textColorHint="@color/white"/>-->
-<!--                </LinearLayout>-->
-
-                <!-- ITEM: Waktu Minum -->
+                <!-- Waktu -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
@@ -157,8 +125,7 @@
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:src="@drawable/medicine"
-                        android:contentDescription="@null" />
+                        android:src="@drawable/medicine"/>
 
                     <EditText
                         android:id="@+id/etWaktu"
@@ -172,33 +139,14 @@
                         android:textColorHint="@color/white"/>
                 </LinearLayout>
 
-<!--                &lt;!&ndash; ITEM: Gejala &ndash;&gt;-->
-<!--                <LinearLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="48dp"-->
-<!--                    android:orientation="horizontal"-->
-<!--                    android:gravity="center_vertical"-->
-<!--                    android:padding="12dp"-->
-<!--                    android:background="@drawable/bg_button_blue_primary">-->
-
-<!--                    <ImageView-->
-<!--                        android:layout_width="20dp"-->
-<!--                        android:layout_height="20dp"-->
-<!--                        android:src="@drawable/coronavirus"-->
-<!--                        android:contentDescription="@null" />-->
-
-<!--                    <EditText-->
-<!--                        android:layout_width="0dp"-->
-<!--                        android:layout_height="48dp"-->
-<!--                        android:layout_weight="1"-->
-<!--                        android:hint="Gejala"-->
-<!--                        android:background="@null"-->
-<!--                        android:paddingStart="12dp"-->
-<!--                        android:textColor="@color/white"-->
-<!--                        android:textColorHint="@color/white"/>-->
-<!--                </LinearLayout>-->
-
             </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvObat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:scrollbars="vertical"/>
 
             <!-- Button -->
             <LinearLayout
@@ -209,15 +157,12 @@
                 android:layout_marginTop="24dp"
                 android:orientation="horizontal"
                 android:gravity="center"
-                android:clickable="true"
-                android:focusable="true"
-                android:background="@drawable/bg_button_blue"
-                android:padding="12dp">
+                android:background="@drawable/bg_button_blue">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Lanjutkan"
+                    android:text="Simpan"
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     android:textStyle="bold"/>
@@ -226,7 +171,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_marginStart="8dp"
-                    android:src="@drawable/arrow" />
+                    android:src="@drawable/arrow"/>
             </LinearLayout>
 
         </LinearLayout>

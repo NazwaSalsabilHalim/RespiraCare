@@ -4,8 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.LinearLayout
+import com.example.respiracare.fragment.ObatkuFragment
 import com.google.android.material.card.MaterialCardView
-import com.google.firebase.auth.FirebaseAuth
 
 class Home : AppCompatActivity() {
 
@@ -25,11 +25,15 @@ class Home : AppCompatActivity() {
         }
 
         menuObatku.setOnClickListener {
-            startActivity(Intent(this, Obatku::class.java))
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("FRAGMENT_TO_LOAD", "obatku")  // Tambah extra untuk tentukan fragment
+            startActivity(intent)
         }
 
         menuInformasi.setOnClickListener {
-            startActivity(Intent(this, LatihanPernapasan::class.java))
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("FRAGMENT_TO_LOAD", "latihan")
+            startActivity(intent)
         }
 
         menuTentang.setOnClickListener {

@@ -1,6 +1,7 @@
-package com.example.respiracare
+package com.example.respiracare.model
 
 data class ObatReminder(
+    val id: String = "",
     val nama: String = "",
     val dosis: String = "",
     val jam: String = "",

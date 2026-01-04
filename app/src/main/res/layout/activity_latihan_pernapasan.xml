@@ -46,6 +46,7 @@
 
         <!-- CARD 1 : Box Breathing -->
         <LinearLayout
+            android:id="@+id/cardBoxBreathing"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:orientation="horizontal"
@@ -54,9 +55,11 @@
             android:padding="20dp"
             android:layout_marginBottom="15dp"
             android:layout_marginStart="12dp"
-            android:layout_marginEnd="12dp">
+            android:layout_marginEnd="12dp"
+            android:clickable="true"
+            android:focusable="true">
 
-            <LinearLayout
+        <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -94,6 +97,7 @@
 
         <!-- CARD 2 : Breathing -->
         <LinearLayout
+            android:id="@+id/cardBreathing"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:orientation="horizontal"
@@ -102,7 +106,9 @@
             android:padding="20dp"
             android:layout_marginBottom="15dp"
             android:layout_marginStart="12dp"
-            android:layout_marginEnd="12dp">
+            android:layout_marginEnd="12dp"
+            android:clickable="true"
+            android:focusable="true">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -141,6 +147,7 @@
 
         <!-- CARD 3 : Equal Breathing -->
         <LinearLayout
+            android:id="@+id/cardEqualBreathing"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:orientation="horizontal"
@@ -149,7 +156,9 @@
             android:padding="20dp"
             android:layout_marginBottom="20dp"
             android:layout_marginStart="12dp"
-            android:layout_marginEnd="12dp">
+            android:layout_marginEnd="12dp"
+            android:clickable="true"
+            android:focusable="true">
 
             <LinearLayout
                 android:layout_width="0dp"
