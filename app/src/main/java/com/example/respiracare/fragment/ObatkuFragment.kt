@@ -4,6 +4,7 @@ import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,7 +31,7 @@ class ObatkuFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.activity_obatku, container, false)
+        return inflater.inflate(R.layout.activity_item_reminder, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -41,12 +42,15 @@ class ObatkuFragment : Fragment() {
         val container = view.findViewById<LinearLayout>(R.id.containerCard)
 
         // 🔹 Buat RecyclerView programmatically
+        adapter = ObatkuAdpter(listObat)
+
         val rv = RecyclerView(requireContext()).apply {
             layoutManager = LinearLayoutManager(requireContext())
-            adapter = ObatkuAdpter(listObat)
+            this.adapter = adapter
         }
-        container.addView(rv) // tambahkan ke bawah containerCard
-        adapter = rv.adapter as ObatkuAdpter
+
+        container.addView(rv)
+
 
         loadData()
 
@@ -85,8 +89,10 @@ class ObatkuFragment : Fragment() {
             .whereEqualTo("aktif", true)
             .get()
             .addOnSuccessListener { result ->
+                Log.d("ObatkuFragment", "Jumlah dokumen: ${result.size()}")
                 listObat.clear()
                 for (doc in result) {
+                    Log.d("ObatkuFragment", "Dokumen: ${doc.id}, nama: ${doc.getString("nama")}")
                     listObat.add(
                         ObatReminder(
                             id = doc.id,
@@ -99,7 +105,9 @@ class ObatkuFragment : Fragment() {
                 }
                 adapter.notifyDataSetChanged()
             }
+
     }
+
 
     private fun setAlarm(data: ObatReminder) {
         val (h, m) = data.jam.split(":").map { it.toInt() }
