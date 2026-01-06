@@ -15,18 +15,10 @@
         android:theme="@style/Theme.RespiraCare">
         <activity
             android:name=".ItemObat"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true"/>
         <activity
             android:name=".ItemReminder"
-            android:exported="true">
-        </activity>
-
+            android:exported="true"/>
         <receiver
             android:name=".ReminderReceiver"
             android:exported="false" />
@@ -36,10 +28,10 @@
             android:exported="true" />
         <activity
             android:name=".Result"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".Prediksi"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".Intro"
             android:exported="true" />
@@ -64,15 +56,13 @@
         <activity
             android:name=".SplashActivity"
             android:exported="true"
-            android:theme="@style/Theme.RespiraCare.Splash">
-        </activity>
+            android:theme="@style/Theme.RespiraCare.Splash" />
         <activity
             android:name=".LoginActivity"
             android:exported="true" />
         <activity
             android:name=".Home"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".ItemMenu"
             android:exported="true" />

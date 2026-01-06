@@ -120,7 +120,23 @@ class Prediksi : AppCompatActivity() {
         // Jalankan prediksi ONNX
         val tensor = OnnxTensor.createTensor(env, FloatBuffer.wrap(input), longArrayOf(1, featureNames.size.toLong()))
         val output = session.run(mapOf("float_input" to tensor))
-        val result = (output[0].value as Array<String>)[0]
+        val outputValue = output[0].value
+
+        val rawResult = when (outputValue) {
+            is LongArray -> outputValue[0].toInt()
+            is FloatArray -> outputValue[0].toInt()
+            is Array<*> -> (outputValue[0] as Number).toInt()
+            is Number -> outputValue.toInt()
+            else -> 0
+        }
+
+        val result = when (rawResult) {
+            0 -> "Rest"
+            1 -> "Medication"
+            2 -> "Hospitalization"
+            3 -> "Lifestyle"
+            else -> "Rest"
+        }
 
         // Mapping nama penyakit & severity ke bahasa indonesia
         val diseaseIdMap = mapOf(

@@ -2,9 +2,9 @@ package com.example.respiracare
 
 import android.os.Bundle
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.FirebaseFirestore
-import android.widget.TextView
 
 class Reminder : AppCompatActivity() {
 
@@ -15,28 +15,31 @@ class Reminder : AppCompatActivity() {
         setContentView(R.layout.activity_reminder)
 
         val listReminder = findViewById<LinearLayout>(R.id.listReminder)
+        loadReminder(listReminder)
+    }
 
+    private fun loadReminder(container: LinearLayout) {
         db.collection("reminder")
             .whereEqualTo("aktif", true)
             .get()
             .addOnSuccessListener { result ->
 
-                listReminder.removeAllViews()
+                container.removeAllViews()
 
                 for (doc in result) {
                     val nama = doc.getString("nama") ?: ""
-                    val jam = doc.getString("jam") ?: ""
+                    val waktu = doc.getString("waktu") ?: ""
 
                     val item = layoutInflater.inflate(
                         R.layout.activity_item_reminder,
-                        listReminder,
+                        container,
                         false
                     )
 
                     item.findViewById<TextView>(R.id.txtNama).text = nama
-                    item.findViewById<TextView>(R.id.txtJam).text = jam
+                    item.findViewById<TextView>(R.id.txtJam).text = waktu
 
-                    listReminder.addView(item)
+                    container.addView(item)
                 }
             }
     }

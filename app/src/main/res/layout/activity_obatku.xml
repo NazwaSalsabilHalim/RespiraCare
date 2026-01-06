@@ -1,33 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/rootObatku"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/blue_light">
 
-    <!-- Curve Background -->
     <LinearLayout
-        android:id="@+id/containerCard"
-        android:layout_width="450dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@drawable/bg_login_curve"
-        android:paddingTop="160dp"
-        android:paddingBottom="160dp"
-        android:paddingStart="30dp"
-        android:paddingEnd="30dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:padding="24dp">
 
+        <!-- Card Container -->
         <LinearLayout
+            android:id="@+id/containerCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@drawable/bg_login_curve"
+            android:paddingTop="60dp"
+            android:paddingBottom="60dp"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp">
 
+            <!-- Title -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -35,28 +31,24 @@
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:layout_marginStart="12dp"
-                android:layout_marginEnd="12dp"/>
+                android:layout_marginBottom="8dp"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Isi detail nama obat, dosis, frekuensi, dan jadwal minum obat untuk membantu mengingatkan kamu tepat waktu."
+                android:text="Isi detail nama obat, dosis, dan waktu minum obat."
                 android:textColor="@color/white"
                 android:textSize="14sp"
-                android:layout_marginTop="8dp"
-                android:layout_marginStart="12dp"
-                android:layout_marginEnd="12dp"/>
+                android:layout_marginBottom="16dp"/>
 
+            <!-- Input Fields -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="16dp"
-                android:layout_marginTop="20dp"
                 android:background="@drawable/bg_input"
-                android:layout_marginStart="12dp"
-                android:layout_marginEnd="12dp">
+                android:layout_marginBottom="16dp">
 
                 <!-- Nama Obat -->
                 <LinearLayout
@@ -72,7 +64,6 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:src="@drawable/drugs"/>
-
                     <EditText
                         android:id="@+id/etNamaObat"
                         android:layout_width="0dp"
@@ -99,7 +90,6 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:src="@drawable/dropper"/>
-
                     <EditText
                         android:id="@+id/etDosis"
                         android:layout_width="0dp"
@@ -112,21 +102,19 @@
                         android:textColorHint="@color/white"/>
                 </LinearLayout>
 
-                <!-- Waktu -->
+                <!-- Waktu Minum -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:orientation="horizontal"
                     android:gravity="center_vertical"
                     android:padding="12dp"
-                    android:layout_marginBottom="12dp"
                     android:background="@drawable/bg_button_blue_primary">
 
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:src="@drawable/medicine"/>
-
                     <EditText
                         android:id="@+id/etWaktu"
                         android:layout_width="0dp"
@@ -138,23 +126,14 @@
                         android:textColor="@color/white"
                         android:textColorHint="@color/white"/>
                 </LinearLayout>
-
             </LinearLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvObat"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:scrollbars="vertical"/>
-
-            <!-- Button -->
+            <!-- Button Simpan -->
             <LinearLayout
-                android:id="@+id/btnLanjutkan"
+                android:id="@+id/btnSimpanObat"
                 android:layout_width="180dp"
                 android:layout_height="48dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="24dp"
                 android:orientation="horizontal"
                 android:gravity="center"
                 android:background="@drawable/bg_button_blue">
@@ -166,15 +145,8 @@
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     android:textStyle="bold"/>
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginStart="8dp"
-                    android:src="@drawable/arrow"/>
             </LinearLayout>
 
         </LinearLayout>
     </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
