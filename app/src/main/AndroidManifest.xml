@@ -14,11 +14,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RespiraCare">
         <activity
+            android:name=".informasi"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".ItemObat"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".ItemReminder"
-            android:exported="true"/>
+            android:exported="true" />
+
         <receiver
             android:name=".ReminderReceiver"
             android:exported="false" />
@@ -62,7 +72,7 @@
             android:exported="true" />
         <activity
             android:name=".Home"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".ItemMenu"
             android:exported="true" />
