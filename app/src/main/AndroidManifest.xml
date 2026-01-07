@@ -14,8 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RespiraCare">
         <activity
-            android:name=".ItemReminder"
+            android:name=".Informasi"
             android:exported="true"/>
+        <activity
+            android:name=".ItemReminder"
+            android:exported="true" />
         <receiver
             android:name=".ReminderReceiver"
             android:exported="false" />
@@ -52,25 +55,22 @@
         <activity
             android:name=".SplashActivity"
             android:exported="true"
-            android:theme="@style/Theme.RespiraCare.Splash" />
-        <activity
-            android:name=".LoginActivity"
-            android:exported="true" />
-        <activity
-            android:name=".Home"
-            android:exported="true"/>
-        <activity
-            android:name=".ItemMenu"
-            android:exported="true" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:theme="@style/Theme.RespiraCare.Splash" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ItemMenu"
+            android:exported="true" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"/>
     </application>
 
 </manifest>

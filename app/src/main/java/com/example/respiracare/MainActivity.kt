@@ -2,12 +2,10 @@ package com.example.respiracare
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import com.example.respiracare.fragment.LatihanPernapasanFragment
-import com.example.respiracare.fragment.ObatkuFragment
+import com.example.respiracare.fragment.HistoryFragment
+import com.example.respiracare.fragment.HomeFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,37 +13,28 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Tombol logout (TETAP)
-        findViewById<Button>(R.id.btnLogout).setOnClickListener {
-            FirebaseAuth.getInstance().signOut()
-            startActivity(Intent(this, LoginActivity::class.java))
-            finish()
-        }
+        // load fragment default → HomeFragment
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainer, HomeFragment())
+            .commit()
 
-        // Cek intent fragment (TETAP)
-        val fragmentToLoad = intent.getStringExtra("FRAGMENT_TO_LOAD")
-        val fragment = when (fragmentToLoad) {
-            "obatku" -> ObatkuFragment()
-            "latihan" -> LatihanPernapasanFragment()
-            else -> null
-        }
-
-        fragment?.let {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainer, it)
-                .commit()
-        }
-
-        // 🔽 TAMBAHAN: FOOTER NAV
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavigation)
         bottomNav.setOnItemSelectedListener { item ->
-            when (item.itemId) {
+            when(item.itemId) {
                 R.id.nav_home -> {
-                    // balik ke halaman awal (tidak ganti fragment)
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragmentContainer, HomeFragment())
+                        .commit()
                     true
                 }
                 R.id.nav_profile -> {
-                    startActivity(Intent(this, profil::class.java))
+                    startActivity(Intent(this, Profil::class.java))
+                    true
+                }
+                R.id.nav_history -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragmentContainer, HistoryFragment())
+                        .commit()
                     true
                 }
                 else -> false
