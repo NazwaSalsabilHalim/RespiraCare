@@ -6,17 +6,24 @@
     android:layout_height="match_parent"
     android:background="@color/blue_light">
 
+    <View
+        android:id="@+id/bgCurve"
+        android:layout_width="0dp"
+        android:layout_height="690dp"
+        android:background="@drawable/bg_login_curve"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <!-- Curve Background -->
     <LinearLayout
         android:id="@+id/containerCard"
-        android:layout_width="450dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@drawable/bg_login_curve"
-        android:paddingTop="140dp"
-        android:paddingBottom="130dp"
-        android:paddingStart="30dp"
-        android:paddingEnd="30dp"
+        android:padding="24dp"
+        android:elevation="4dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

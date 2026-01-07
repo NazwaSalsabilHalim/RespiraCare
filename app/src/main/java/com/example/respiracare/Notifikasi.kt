@@ -7,6 +7,7 @@ import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.FirebaseFirestore
 import android.app.AlarmManager
+import android.widget.TextView
 
 class Notifikasi : AppCompatActivity() {
 
@@ -25,6 +26,20 @@ class Notifikasi : AppCompatActivity() {
         findViewById<LinearLayout>(R.id.btnAbaikan).setOnClickListener {
             selesai(id)
         }
+
+        val txtKeterangan = findViewById<TextView>(R.id.txtKeterangan)
+
+        db.collection("reminder")
+            .document(id)
+            .get()
+            .addOnSuccessListener { doc ->
+                if (doc.exists()) {
+                    val nama = doc.getString("nama") ?: ""
+                    val waktu = doc.getString("waktu") ?: ""
+
+                    txtKeterangan.text = "$nama - $waktu"
+                }
+            }
     }
 
     private fun selesai(id: String) {
