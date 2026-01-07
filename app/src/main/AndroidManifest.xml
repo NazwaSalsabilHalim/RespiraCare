@@ -14,33 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RespiraCare">
         <activity
-<<<<<<< HEAD
-            android:name=".bottom_nav_menu"
-            android:exported="false" />
-        <activity
-            android:name=".profil"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".informasi"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-=======
->>>>>>> f18e141fda5f64cc4d6c476b053fdb42460ab774
-            android:name=".ItemObat"
-            android:exported="true"/>
-        <activity
             android:name=".ItemReminder"
             android:exported="true"/>
         <receiver
